@@ -1,0 +1,38 @@
+.container{
+    background-color: #f2e9e4;
+    width: 500px;
+    padding: 20px;
+    height: fit-content;
+}
+.container > div{
+    margin-top: 10px;
+}
+.calculationContainer{
+    justify-content: end;
+    display: flex;
+}
+.calculationContainer p{
+    font-size: 30px;
+}
+.calculationType{
+    align-self: flex-end;
+}
+.calculationValues{
+    text-align: right;
+}
+.customHr{
+    width: 100%;
+    height: 1px;
+    background-color: black;
+}
+.inputContainer{
+    width: 100%;
+    padding: 20px;
+    text-align: right;
+}
+@media screen and (max-width: 768px) {
+    .container{
+        width: 90%;
+    }
+    
+}
