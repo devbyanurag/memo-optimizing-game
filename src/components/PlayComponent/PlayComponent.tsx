@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styles from './PlayComponent.module.css'
 
-const PlayComponent = () => {
+
+interface PlayComponentProps{
+}
+
+const PlayComponent = ({}:PlayComponentProps) => {
 
   const [inputValue, setInputValue] = useState<string>('')
   return (

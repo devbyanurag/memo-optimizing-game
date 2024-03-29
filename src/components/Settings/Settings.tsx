@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
 import styles from './Settings.module.css'
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 
 
 interface SettingsProps {
@@ -16,6 +15,7 @@ interface SettingsProps {
   handleChangeDigit:  (value: string) => void
   handleTimeSeconds: (type: 'INC' | 'DEC') => void;
   handleTimerChecked: () => void;
+  handleStart: () => void;
 }
 
 const Settings = ({
@@ -27,6 +27,7 @@ const Settings = ({
   handleChangeDigit,
   handleTimeSeconds,
   handleTimerChecked,
+  handleStart
 }:SettingsProps) => {
 
   
@@ -88,7 +89,7 @@ const Settings = ({
         </div>
       </div>
       <div className={styles.type_container}>
-        <button className={styles.startBtn}>Start</button>
+        <button className={styles.startBtn} onClick={handleStart}>Start</button>
       </div>
     </div>
   )
