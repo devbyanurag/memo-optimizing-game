@@ -37,6 +37,7 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
+      
       {started ?
         <Settings
           type={type}

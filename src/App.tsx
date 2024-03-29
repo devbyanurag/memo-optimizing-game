@@ -1,15 +1,16 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home/Home'
-import Header from './components/Header/Header'
+import Testing from './pages/Testing/Testing'
 
 function App() {
 
   return (
     <>
-      <Header />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/game' element={<Home />} />
+        <Route path='/yashu' element={<Testing />} />
+
       </Routes>
     </>
 

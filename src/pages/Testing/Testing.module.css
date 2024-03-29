@@ -1,0 +1,15 @@
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f5cac3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.image_size{
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+    padding: 20px;
+}
