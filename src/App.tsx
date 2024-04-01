@@ -1,15 +1,20 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home/Home'
-import Testing from './pages/Testing/Testing'
+import { Toaster } from 'react-hot-toast';
+import Header from './components/Header/Header';
+
+// import Testing from './pages/Testing/Testing'
 
 function App() {
 
   return (
     <>
+    <Toaster/>
+    <Header/>
       <Routes>
-        <Route path='/game' element={<Home />} />
-        <Route path='/' element={<Testing />} />
+        <Route path='/' element={<Home />} />
+        {/* <Route path='/' element={<Testing />} /> */}
 
       </Routes>
     </>

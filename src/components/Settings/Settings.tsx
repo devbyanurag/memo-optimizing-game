@@ -11,26 +11,30 @@ interface SettingsProps {
   digit: string;
   timeSeconds: number;
   timerChecked: boolean;
-  handleChangeType:  (value: string) => void
-  handleChangeDigit:  (value: string) => void
+  handleChangeType: (value: string) => void
+  handleChangeDigit: (value: string) => void
   handleTimeSeconds: (type: 'INC' | 'DEC') => void;
   handleTimerChecked: () => void;
   handleStart: () => void;
+  handleQuestion: (value: string) => void;
+  questionsNo: string;
 }
 
 const Settings = ({
   type,
   digit,
-  timeSeconds,
-  timerChecked,
+  // timeSeconds,
+  // timerChecked,
   handleChangeType,
   handleChangeDigit,
-  handleTimeSeconds,
-  handleTimerChecked,
-  handleStart
-}:SettingsProps) => {
+  // handleTimeSeconds,
+  // handleTimerChecked,
+  handleStart,
+  handleQuestion,
+  questionsNo
+}: SettingsProps) => {
 
-  
+
 
   return (
     <div className={styles.container}>
@@ -47,7 +51,7 @@ const Settings = ({
               labelId="demo-simple-select-label"
               value={type}
               label="Type"
-              onChange={(e)=>{handleChangeType(e.target.value)}}
+              onChange={(e) => { handleChangeType(e.target.value) }}
             >
               <MenuItem value={"ADD"}>Addition</MenuItem>
               <MenuItem value={"SUB"}>Subtraction</MenuItem>
@@ -57,6 +61,7 @@ const Settings = ({
           </FormControl>
         </Box>
       </div>
+
       <div className={styles.type_container}>
         <p>Select Digit</p>
         <Box>
@@ -64,7 +69,7 @@ const Settings = ({
             <Select
               labelId="demo-simple-select-label"
               value={digit}
-              onChange={(e)=>{handleChangeDigit(e.target.value)}}
+              onChange={(e) => { handleChangeDigit(e.target.value) }}
             >
               <MenuItem value={'2'}>2</MenuItem>
               <MenuItem value={'3'}>3</MenuItem>
@@ -78,6 +83,26 @@ const Settings = ({
         </Box>
       </div>
       <div className={styles.type_container}>
+        <p>Select Number of Questions you want.</p>
+        <Box>
+          <FormControl fullWidth>
+            <Select
+              labelId="demo-simple-select-label"
+              value={questionsNo}
+              onChange={(e) => { handleQuestion(e.target.value) }}
+            >
+              <MenuItem value={'5'}>5</MenuItem>
+              <MenuItem value={'10'}>10</MenuItem>
+              <MenuItem value={'20'}>20</MenuItem>
+              <MenuItem value={'30'}>30</MenuItem>
+              <MenuItem value={'40'}>40</MenuItem>
+              <MenuItem value={'50'}>50</MenuItem>
+
+            </Select>
+          </FormControl>
+        </Box>
+      </div>
+      {/* <div className={styles.type_container}>
         <p>Timer?</p>
         <div className={styles.timerContainer}>
         <input type='checkbox' checked={timerChecked} onClick={handleTimerChecked}/>
@@ -87,7 +112,7 @@ const Settings = ({
           <button onClick={()=>{handleTimeSeconds("DEC")}}>-</button>
         </div>
         </div>
-      </div>
+      </div> */}
       <div className={styles.type_container}>
         <button className={styles.startBtn} onClick={handleStart}>Start</button>
       </div>

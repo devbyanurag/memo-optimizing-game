@@ -1,0 +1,30 @@
+.container{
+    background-color: #f2e9e4;
+    width: 500px;
+    padding: 20px;
+    height: fit-content;
+}
+.result{
+    border-bottom: 2px solid black;
+ margin-bottom: 10px;
+}
+.containerQueResult{
+ border-bottom: 2px solid black;
+ margin-bottom: 10px;
+}
+.containerQueNum{
+    display: flex;
+    justify-content: space-between;
+}
+.correctAns{
+    color: green;
+}
+.wrongAns{
+    color: red;
+}
+@media screen and (max-width: 768px) {
+    .container{
+        width: 90%;
+    }
+    
+}
