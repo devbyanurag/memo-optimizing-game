@@ -95,7 +95,7 @@ const Home = () => {
           handleQuestion={handleQuestion}
           questionsNo={questionsNo}
         /> :
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center' }}>
           {questions.every((q) => q.userAnswer !== '') ? (
             <div className={styles.scoreContainer}>
                <p>Score: {questions.filter((q) => q.answer === q.userAnswer).length}/{questions.length}</p>
