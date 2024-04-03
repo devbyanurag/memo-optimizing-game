@@ -5,7 +5,8 @@ interface Question {
   firstValue: string;
   secondValue: string;
   answer: string;
-  userAnswer: string
+  userAnswer: string;
+  timeTaken: number
 }
 
 interface ResultTableProps {
@@ -30,10 +31,7 @@ const ResultTable = ({ questions, type }: ResultTableProps) => {
       setquestionType('/')
 
     }
-
-
   }, [type])
-
 
 
   return (
@@ -50,9 +48,7 @@ const ResultTable = ({ questions, type }: ResultTableProps) => {
                 </div></div>
               <div>Your Answer : <span className={question.answer===question.userAnswer? styles.correctAns: styles.wrongAns}>{question.userAnswer}</span></div>
               <div>Correct Answer : {question.answer}</div>
-
-
-
+              <div>Time taken : {question.timeTaken} Seconds</div>
             </div>
           )
         })

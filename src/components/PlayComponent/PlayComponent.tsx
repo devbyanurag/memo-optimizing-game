@@ -6,11 +6,12 @@ interface Question {
   firstValue: string;
   secondValue: string;
   answer: string;
+  timeTaken: number
 }
 
 interface PlayComponentProps {
   questions: Question[];
-  setUserAnswer: (index: number, answer: string) => void
+  setUserAnswer: (index: number, answer: string, time: number) => void
   type: string
 
 }
@@ -18,14 +19,17 @@ interface PlayComponentProps {
 const PlayComponent = ({ questions, setUserAnswer, type }: PlayComponentProps) => {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [inputValue, setInputValue] = useState<string>('');
-  const [currentIntex, setCurrentIntex] = useState<number>(0)
+  const [currentIndex, setCurrentIndex] = useState<number>(0)
+  const [questionType, setquestionType] = useState('+')
+  const [seconds, setSeconds] = useState(0);
+
+
 
   useEffect(() => {
     if (questions.length > 0) {
-      setCurrentQuestion(questions[currentIntex]);
+      setCurrentQuestion(questions[currentIndex]);
     }
   }, [questions]);
-  const [questionType, setquestionType] = useState('+')
 
   useEffect(() => {
     if (type === 'ADD') {
@@ -40,13 +44,11 @@ const PlayComponent = ({ questions, setUserAnswer, type }: PlayComponentProps) =
       setquestionType('/')
 
     }
-
-
   }, [type])
 
   const handleNextQuestion = () => {
-    if (currentIntex + 1 < questions.length) {
-      if(questions[currentIntex].answer===inputValue){
+    if (currentIndex + 1 < questions.length) {
+      if(questions[currentIndex].answer===inputValue){
         toast.success('correct',{duration: 1000})
       }
       else{
@@ -56,19 +58,31 @@ const PlayComponent = ({ questions, setUserAnswer, type }: PlayComponentProps) =
       setInputValue('');
 
       if (questions.length > 1) {
-        setCurrentQuestion(questions[currentIntex + 1]);
+        setCurrentQuestion(questions[currentIndex + 1]);
       }
-      setCurrentIntex(currentIntex + 1)
+      setCurrentIndex(currentIndex + 1)
+      setSeconds(0)
     }
 
 
   };
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds(prevSeconds => prevSeconds + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
 
   return (
     <div className={styles.container}>
     <Toaster/>
 
-      <p>Question No.: {currentIntex+1}</p>
+      <div style={{display: 'flex', justifyContent:'space-between'}}>
+      <p>Question No.: {currentIndex+1}</p>
+      <p>Time: {seconds}</p>
+      </div>
       {currentQuestion && (
         <div className={styles.calculationContainer}>
           <div className={styles.calculationType}>
@@ -90,10 +104,10 @@ const PlayComponent = ({ questions, setUserAnswer, type }: PlayComponentProps) =
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               if(inputValue){
-                setUserAnswer(currentIntex, inputValue);
+                setUserAnswer(currentIndex, inputValue,seconds);
               }
               else{
-                setUserAnswer(currentIntex, 'Not Answered');
+                setUserAnswer(currentIndex, 'Not Answered', seconds);
               }
               handleNextQuestion()
             }

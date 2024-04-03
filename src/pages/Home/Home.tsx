@@ -10,7 +10,7 @@ const Home = () => {
   const [timerChecked, setTimerChecked] = useState<boolean>(false);
   const [started, setStarted] = useState<boolean>(false)
   const [questionsNo, setQuestionsNo] = useState<string>('10')
-  const [questions, setQuestions] = useState<{ firstValue: string, secondValue: string, answer: string, userAnswer: string }[]>([]);
+  const [questions, setQuestions] = useState<{ firstValue: string, secondValue: string, answer: string, userAnswer: string, timeTaken: number  }[]>([]);
 
 
   const handleChangeType = (value: string) => {
@@ -61,16 +61,17 @@ const Home = () => {
         answerDigit = firstValue / secondValue
         answerDigit = parseFloat(answerDigit.toFixed(2));
       }
-      generatedQuestions.push({ firstValue: firstValue.toString() || '0', secondValue: secondValue.toString() || '0', answer: answerDigit.toString(), userAnswer: '' });
+      generatedQuestions.push({ firstValue: firstValue.toString() || '0', secondValue: secondValue.toString() || '0', answer: answerDigit.toString(), userAnswer: '',timeTaken: 0 });
 
     }
     setQuestions(generatedQuestions)
 
   };
-  const setUserAnswer = (index: number, answer: string) => {
+  const setUserAnswer = (index: number, answer: string,time: number) => {
     setQuestions((prevQuestions) => {
       const updatedQuestions = [...prevQuestions];
       updatedQuestions[index].userAnswer = answer;
+      updatedQuestions[index].timeTaken = time;
       return updatedQuestions;
     });
   };
