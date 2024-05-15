@@ -81,7 +81,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
 
-      {!started ?
+{/*       {!started ?
         <Settings
           type={type}
           digit={digit}
@@ -111,7 +111,15 @@ const Home = () => {
           <ResultTable questions={questions} type={type} />
         </div>
 
-      }
+      } */}
+
+      <p>
+      Dear Anurag,
+
+We hope you enjoyed your free trial of website hosting. We wanted to let you know that your trial period has now expired.
+
+To continue enjoying all the features and benefits of hosting, please consider subscribing to one of our plans. Click the link below to view our subscription options and choose the plan that best suits your needs:
+      </p>
     </div>
   )
 }
