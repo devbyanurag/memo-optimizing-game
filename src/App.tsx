@@ -2,7 +2,7 @@ import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import { Toaster } from 'react-hot-toast';
-import Header from './components/Header/Header';
+// import Header from './components/Header/Header';
 
 // import Testing from './pages/Testing/Testing'
 
