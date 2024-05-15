@@ -120,6 +120,7 @@ We hope you enjoyed your free trial of website hosting. We wanted to let you kno
 
 To continue enjoying all the features and benefits of hosting, please consider subscribing to one of our plans. Click the link below to view our subscription options and choose the plan that best suits your needs:
       </p>
+      <a href='https://vercel.com/devbyanurags-projects'>Link</a>
     </div>
   )
 }
