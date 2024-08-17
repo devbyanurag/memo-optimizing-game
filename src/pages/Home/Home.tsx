@@ -1,87 +1,87 @@
-// import { useState } from 'react'
+import { useState } from 'react'
 import styles from './Home.module.css'
-// import Settings from '../../components/Settings/Settings'
-// import PlayComponent from '../../components/PlayComponent/PlayComponent';
-// import ResultTable from '../../components/ResultTable/ResultTable';
+import Settings from '../../components/Settings/Settings'
+import PlayComponent from '../../components/PlayComponent/PlayComponent';
+import ResultTable from '../../components/ResultTable/ResultTable';
 const Home = () => {
-  // const [type, setType] = useState<string>('ADD');
-  // const [digit, setDigit] = useState<string>('2');
-  // const [timeSeconds, setTimeSeconds] = useState<number>(30);
-  // const [timerChecked, setTimerChecked] = useState<boolean>(false);
-  // const [started, setStarted] = useState<boolean>(false)
-  // const [questionsNo, setQuestionsNo] = useState<string>('10')
-  // const [questions, setQuestions] = useState<{ firstValue: string, secondValue: string, answer: string, userAnswer: string, timeTaken: number  }[]>([]);
+  const [type, setType] = useState<string>('ADD');
+  const [digit, setDigit] = useState<string>('2');
+  const [timeSeconds, setTimeSeconds] = useState<number>(30);
+  const [timerChecked, setTimerChecked] = useState<boolean>(false);
+  const [started, setStarted] = useState<boolean>(false)
+  const [questionsNo, setQuestionsNo] = useState<string>('10')
+  const [questions, setQuestions] = useState<{ firstValue: string, secondValue: string, answer: string, userAnswer: string, timeTaken: number  }[]>([]);
 
 
-  // const handleChangeType = (value: string) => {
-  //   setType(value);
-  // };
+  const handleChangeType = (value: string) => {
+    setType(value);
+  };
 
-  // const handleChangeDigit = (value: string) => {
-  //   setDigit(value);
-  // };
-  // const handleQuestion = (value: string) => {
-  //   setQuestionsNo(value);
-  // };
+  const handleChangeDigit = (value: string) => {
+    setDigit(value);
+  };
+  const handleQuestion = (value: string) => {
+    setQuestionsNo(value);
+  };
 
-  // const handleTimeSeconds = (type: 'INC' | 'DEC') => {
-  //   if (type === 'INC') {
-  //     setTimeSeconds(timeSeconds + 1);
-  //   }
-  //   if (type === 'DEC') {
-  //     setTimeSeconds(timeSeconds - 1);
-  //   }
-  // };
+  const handleTimeSeconds = (type: 'INC' | 'DEC') => {
+    if (type === 'INC') {
+      setTimeSeconds(timeSeconds + 1);
+    }
+    if (type === 'DEC') {
+      setTimeSeconds(timeSeconds - 1);
+    }
+  };
 
-  // const handleTimerChecked = () => {
-  //   setTimerChecked(!timerChecked);
-  // };
+  const handleTimerChecked = () => {
+    setTimerChecked(!timerChecked);
+  };
 
-  // function generateRandomNumber(digits: number) {
-  //   const min = Math.pow(10, digits - 1); // Minimum value for n digits (e.g., 100 for 3 digits)
-  //   const max = Math.pow(10, digits) - 1; // Maximum value for n digits (e.g., 999 for 3 digits)
-  //   return Math.floor(Math.random() * (max - min + 1)) + min;
-  // }
+  function generateRandomNumber(digits: number) {
+    const min = Math.pow(10, digits - 1); // Minimum value for n digits (e.g., 100 for 3 digits)
+    const max = Math.pow(10, digits) - 1; // Maximum value for n digits (e.g., 999 for 3 digits)
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
-  // const handleStart = () => {
-  //   setStarted(!started);
-  //   const generatedQuestions = [];
-  //   for (let i = 0; i < parseInt(questionsNo); i++) {
-  //     let firstValue = generateRandomNumber(parseInt(digit))
-  //     let secondValue = generateRandomNumber(parseInt(digit))
-  //     let answerDigit = 0;
-  //     if (type === 'ADD') {
-  //       answerDigit = firstValue + secondValue
-  //     } else if (type === 'SUB') {
-  //       answerDigit = firstValue - secondValue
-  //     } else if (type === 'MUL') {
-  //       answerDigit = firstValue * secondValue
-  //       answerDigit = parseFloat(answerDigit.toFixed(2));
-  //     } else if (type === 'DIV') {
-  //       answerDigit = firstValue / secondValue
-  //       answerDigit = parseFloat(answerDigit.toFixed(2));
-  //     }
-  //     generatedQuestions.push({ firstValue: firstValue.toString() || '0', secondValue: secondValue.toString() || '0', answer: answerDigit.toString(), userAnswer: '',timeTaken: 0 });
+  const handleStart = () => {
+    setStarted(!started);
+    const generatedQuestions = [];
+    for (let i = 0; i < parseInt(questionsNo); i++) {
+      let firstValue = generateRandomNumber(parseInt(digit))
+      let secondValue = generateRandomNumber(parseInt(digit))
+      let answerDigit = 0;
+      if (type === 'ADD') {
+        answerDigit = firstValue + secondValue
+      } else if (type === 'SUB') {
+        answerDigit = firstValue - secondValue
+      } else if (type === 'MUL') {
+        answerDigit = firstValue * secondValue
+        answerDigit = parseFloat(answerDigit.toFixed(2));
+      } else if (type === 'DIV') {
+        answerDigit = firstValue / secondValue
+        answerDigit = parseFloat(answerDigit.toFixed(2));
+      }
+      generatedQuestions.push({ firstValue: firstValue.toString() || '0', secondValue: secondValue.toString() || '0', answer: answerDigit.toString(), userAnswer: '',timeTaken: 0 });
 
-  //   }
-  //   setQuestions(generatedQuestions)
+    }
+    setQuestions(generatedQuestions)
 
-  // };
-  // const setUserAnswer = (index: number, answer: string,time: number) => {
-  //   setQuestions((prevQuestions) => {
-  //     const updatedQuestions = [...prevQuestions];
-  //     updatedQuestions[index].userAnswer = answer;
-  //     updatedQuestions[index].timeTaken = time;
-  //     return updatedQuestions;
-  //   });
-  // };
+  };
+  const setUserAnswer = (index: number, answer: string,time: number) => {
+    setQuestions((prevQuestions) => {
+      const updatedQuestions = [...prevQuestions];
+      updatedQuestions[index].userAnswer = answer;
+      updatedQuestions[index].timeTaken = time;
+      return updatedQuestions;
+    });
+  };
 
 
 
   return (
     <div className={styles.container}>
 
-{/*       {!started ?
+      {!started ?
         <Settings
           type={type}
           digit={digit}
@@ -111,9 +111,9 @@ const Home = () => {
           <ResultTable questions={questions} type={type} />
         </div>
 
-      } */}
+      }
 
-      <p>
+{/*       <p>
       Dear Anurag,
 
 We hope you enjoyed your free trial of website hosting. We wanted to let you know that your trial period has now expired.
@@ -121,7 +121,7 @@ We hope you enjoyed your free trial of website hosting. We wanted to let you kno
 To continue enjoying all the features and benefits of hosting, please consider subscribing to one of our plans. Click the link below to view our subscription options and choose the plan that best suits your needs:
       </p>
       <a href='https://vercel.com/devbyanurags-projects'>Link</a>
-    </div>
+    </div> */}
   )
 }
 
